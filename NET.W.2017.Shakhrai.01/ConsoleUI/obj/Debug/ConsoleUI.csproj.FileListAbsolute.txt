@@ -1,0 +1,9 @@
+D:\Projects\EPAM\NET.W.2017.Shakhrai.01\ConsoleUI\bin\Debug\ConsoleUI.exe.config
+D:\Projects\EPAM\NET.W.2017.Shakhrai.01\ConsoleUI\bin\Debug\ConsoleUI.exe
+D:\Projects\EPAM\NET.W.2017.Shakhrai.01\ConsoleUI\bin\Debug\ConsoleUI.pdb
+D:\Projects\EPAM\NET.W.2017.Shakhrai.01\ConsoleUI\bin\Debug\ArraySorting.dll
+D:\Projects\EPAM\NET.W.2017.Shakhrai.01\ConsoleUI\bin\Debug\ArraySorting.pdb
+D:\Projects\EPAM\NET.W.2017.Shakhrai.01\ConsoleUI\obj\Debug\ConsoleUI.csprojResolveAssemblyReference.cache
+D:\Projects\EPAM\NET.W.2017.Shakhrai.01\ConsoleUI\obj\Debug\ConsoleUI.csproj.CoreCompileInputs.cache
+D:\Projects\EPAM\NET.W.2017.Shakhrai.01\ConsoleUI\obj\Debug\ConsoleUI.exe
+D:\Projects\EPAM\NET.W.2017.Shakhrai.01\ConsoleUI\obj\Debug\ConsoleUI.pdb
