@@ -1,41 +1,53 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Sorting;
 
 namespace ConsoleUI
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
-            //Инициализация массива
-            int[] arr = new int[100];
-            Random rd = new Random();
-            for (int i = 0; i < arr.Length; i++)
+            int[] array1 = new int[100];
+            int[] array2 = new int[100];
+            Random random = new Random();
+            for (int i = 0; i < array1.Length; i++)
             {
-                arr[i] = rd.Next(1, 1000);
+                array1[i] = random.Next(1, 1000);
             }
-            //Вывод исходного массива в консоль
-            Console.WriteLine("Array before sorting:");
-            foreach (int a in arr)
+
+            for (int i = 0; i < array1.Length; i++)
+            {
+                array2[i] = random.Next(1, 1000);
+            }
+
+            Console.WriteLine("Array1 before sorting:\n");
+            foreach (int a in array1)
             {
                 Console.Write(a + " ");
             }
 
-            //Проверяем быструю сортировку
-            //ArraySorting.QuickSorting(arr, 0, arr.Length - 1);
-            //Console.WriteLine("\nArray after quick sorting:");
-            //foreach (int a in arr)
-            //{
-            //    Console.Write(a + " ");
-            //}
+            Console.WriteLine("\n");
 
-            //Проверяем сортировку слиянием
-            Console.WriteLine("\nArray after merge sorting:");
-            foreach (int a in ArraySorting.MergeSorting(arr))
+            Console.WriteLine("Array1 after merge sorting:\n");
+            ArraySorting.MergeSort(array1);
+            foreach (int a in array1)
+            {
+                Console.Write(a + " ");
+            }
+
+            Console.WriteLine("\n");
+
+            Console.WriteLine("Array2 before sorting:\n");
+            foreach (int a in array2)
+            {
+                Console.Write(a + " ");
+            }
+
+            Console.WriteLine("\n");
+
+            Console.WriteLine("Array2 after quick sorting:\n");
+            ArraySorting.QuickSort(array2);
+            foreach (int a in array2)
             {
                 Console.Write(a + " ");
             }

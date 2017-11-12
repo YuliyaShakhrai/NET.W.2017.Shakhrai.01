@@ -1,64 +1,120 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Sorting
+﻿namespace Sorting
 {
     public class ArraySorting
     {
-        public static void QuickSorting(int[] arr, int first, int last)
+        public static void QuickSort(int[] array)
         {
-            if (arr.Length == 1)
+            int first = 0;
+            int last = array.Length - 1;
+            QuickSort(array, first, last);
+        }
+
+        public static void QuickSort(int[] array, int first, int last)
+        {
+            if (array.Length == 1)
+            {
                 return;
-            int middle = arr[(last - first) / 2 + first];
+            }
+
+            int middle = array[((last - first) / 2) + first];
             int temp;
             int i = first, j = last;
             while (i <= j)
             {
-                while (arr[i] < middle && i <= last) ++i;
-                while (arr[j] > middle && j >= first) --j;
+                while (array[i] < middle && i <= last)
+                {
+                    ++i;
+                }
+
+                while (array[j] > middle && j >= first)
+                {
+                    --j;
+                }
+
                 if (i <= j)
                 {
-                    temp = arr[i];
-                    arr[i] = arr[j];
-                    arr[j] = temp;
+                    temp = array[i];
+                    array[i] = array[j];
+                    array[j] = temp;
                     ++i;
                     --j;
                 }
             }
-            if (j > first) QuickSorting(arr, first, j);
-            if (i < last) QuickSorting(arr, i, last);
-        }
 
-        public static int[] MergeSorting(int[] arr)
-        {
-            if (arr.Length == 1)
-                return arr;
-            int mid_point = arr.Length / 2;
-            return Merge(MergeSorting(arr.Take(mid_point).ToArray()),
-                MergeSorting(arr.Skip(mid_point).ToArray()));
-        }
-
-        public static int[] Merge(int[] arr1, int[] arr2)
-        {
-            int a = 0, b = 0;
-            int[] result = new int[arr1.Length + arr2.Length];
-            for (int i = 0; i < arr1.Length + arr2.Length; i++)
+            if (j > first)
             {
-                if (b < arr2.Length && a < arr1.Length)
-                    if (arr1[a] > arr2[b])
-                        result[i] = arr2[b++];
-                    else
-                        result[i] = arr1[a++];
-                else
-                    if (b < arr2.Length)
-                    result[i] = arr2[b++];
-                else
-                    result[i] = arr1[a++];
+                QuickSort(array, first, j);
             }
-            return result;
+
+            if (i < last)
+            {
+                QuickSort(array, i, last);
+            }
+        }
+
+        public static void MergeSort(int[] array, int low, int high)
+        {
+            if (low < high)
+            {
+                int middle = (low / 2) + (high / 2);
+                MergeSort(array, low, middle);
+                MergeSort(array, middle + 1, high);
+                Merge(array, low, middle, high);
+            }
+        }
+
+        public static void MergeSort(int[] array)
+        {
+            MergeSort(array, 0, array.Length - 1);
+        }
+
+        private static void Merge(int[] array, int low, int middle, int high)
+        {
+            int left = low;
+            int right = middle + 1;
+            int[] temp = new int[(high - low) + 1];
+            int tempIndex = 0;
+
+            while ((left <= middle) && (right <= high))
+            {
+                if (array[left] < array[right])
+                {
+                    temp[tempIndex] = array[left];
+                    left = left + 1;
+                }
+                else
+                {
+                    temp[tempIndex] = array[right];
+                    right = right + 1;
+                }
+
+                tempIndex = tempIndex + 1;
+            }
+
+            if (left <= middle)
+            {
+                while (left <= middle)
+                {
+                    temp[tempIndex] = array[left];
+                    left = left + 1;
+                    tempIndex = tempIndex + 1;
+                }
+            }
+
+            if (right <= high)
+            {
+                while (right <= high)
+                {
+                    temp[tempIndex] = array[right];
+                    right = right + 1;
+                    tempIndex = tempIndex + 1;
+                }
+            }
+
+            for (int i = 0; i < temp.Length; i++)
+            {
+                array[low + i] = temp[i];
+            }
         }
     }
 }
