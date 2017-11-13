@@ -7,6 +7,8 @@ namespace Sorting.Tests
     [TestFixture]
     public class ArraySortingTests
     {
+        #region QuickSort_Tests
+
         [Test]
         public void QuickSort_Test()
         {
@@ -26,6 +28,24 @@ namespace Sorting.Tests
         }
 
         [Test]
+        public void QuickSort_NullArray_ThrowsNullReferenceException()
+        {
+            int[] array = null;
+            Assert.Throws<NullReferenceException>(() => ArraySorting.QuickSort(array));
+        }
+
+        [Test]
+        public void QuickSort_ArrayLength0_ThrowsArgumentException()
+        {
+            int[] array = new int[0];
+            Assert.Throws<ArgumentException>(() => ArraySorting.QuickSort(array));
+        }
+
+        #endregion
+
+        #region MergeSort_Tests
+
+        [Test]
         public void MergeSort_Test()
         {
             int[] array1 = new int[100];
@@ -42,5 +62,21 @@ namespace Sorting.Tests
             array2 = array2.OrderBy(x => x).ToArray();
             Assert.AreEqual(array2, array1);
         }
+
+        [Test]
+        public void MergeSort_NullArray_ThrowsNullReferenceException()
+        {
+            int[] array = null;
+            Assert.Throws<NullReferenceException>(() => ArraySorting.MergeSort(array));
+        }
+
+        [Test]
+        public void MergeSort_ArrayLength0_ThrowsArgumentException()
+        {
+            int[] array = new int[0];
+            Assert.Throws<ArgumentException>(() => ArraySorting.MergeSort(array));
+        }
+
+        #endregion
     }
 }

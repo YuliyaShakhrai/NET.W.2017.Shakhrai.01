@@ -1,16 +1,52 @@
-﻿namespace Sorting
+﻿using System;
+
+namespace Sorting
 {
     public class ArraySorting
     {
+        #region QuickSort
+        /// <summary>
+        /// Method that implements an algorithm for quick sorting of an array.
+        /// </summary>
+        /// <param name="array">Sortable array.</param>
         public static void QuickSort(int[] array)
         {
-            int first = 0;
-            int last = array.Length - 1;
-            QuickSort(array, first, last);
+            if (array.Length == 0)
+            {
+                throw new ArgumentException($"{nameof(array)} length is 0.");
+            }
+
+            if (array == null)
+            {
+                throw new NullReferenceException($"{nameof(array)} is null.");
+            }
+
+            if (array.Length == 1)
+            {
+                return;
+            }
+
+            QuickSort(array, 0, array.Length - 1);
         }
 
+        /// <summary>
+        /// Method that implements an algorithm for quick sorting of an array.
+        /// </summary>
+        /// <param name="array">Sortable array.</param>
+        /// <param name="first">Start position.</param>
+        /// <param name="last">End position.</param>
         public static void QuickSort(int[] array, int first, int last)
         {
+            if (array.Length == 0)
+            {
+                throw new ArgumentException($"{nameof(array)} length is 0.");
+            }
+
+            if (array == null)
+            {
+                throw new NullReferenceException($"{nameof(array)} is null.");
+            }
+
             if (array.Length == 1)
             {
                 return;
@@ -51,9 +87,56 @@
                 QuickSort(array, i, last);
             }
         }
+        #endregion
 
+        #region MergeSort
+        /// <summary>
+        /// Method that implements an algorithm for merge sorting of an array.
+        /// </summary>
+        /// <param name="array">Sortable array.</param>
+        public static void MergeSort(int[] array)
+        {
+            if (array.Length == 0)
+            {
+                throw new ArgumentException($"{nameof(array)} length is 0.");
+            }
+
+            if (array == null)
+            {
+                throw new NullReferenceException($"{nameof(array)} is null.");
+            }
+
+            if (array.Length == 1)
+            {
+                return;
+            }
+
+            MergeSort(array, 0, array.Length - 1);
+        }
+
+        /// <summary>
+        /// Method that implements an algorithm for merge sorting of an array.
+        /// </summary>
+        /// <param name="array">Sortable array.</param>
+        /// <param name="first">Start position.</param>
+        /// <param name="last">End position.</param>
         public static void MergeSort(int[] array, int low, int high)
         {
+            if (array.Length == 0)
+            {
+                throw new ArgumentException($"{nameof(array)} length is 0.");
+            }
+
+            if (array == null)
+            {
+                throw new NullReferenceException($"{nameof(array)} is null.");
+            }
+
+            if (array.Length == 1)
+            {
+                return;
+            }
+
             if (low < high)
             {
                 int middle = (low / 2) + (high / 2);
@@ -63,13 +146,24 @@
             }
         }
 
-        public static void MergeSort(int[] array)
-        {
-            MergeSort(array, 0, array.Length - 1);
-        }
-
+        #region Private method
         private static void Merge(int[] array, int low, int middle, int high)
         {
+            if (array.Length == 0)
+            {
+                throw new ArgumentException($"{nameof(array)} length is 0.");
+            }
+
+            if (array == null)
+            {
+                throw new NullReferenceException($"{nameof(array)} is null.");
+            }
+
+            if (array.Length == 1)
+            {
+                return;
+            }
+
             int left = low;
             int right = middle + 1;
             int[] temp = new int[(high - low) + 1];
@@ -117,4 +211,8 @@
             }
         }
     }
+
+    #endregion
+
+    #endregion
 }
